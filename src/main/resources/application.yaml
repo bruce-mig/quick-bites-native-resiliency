@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: quick-bites-native-resiliency
