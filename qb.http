@@ -3,7 +3,7 @@
 
 ### Get All Restaurants
 # Shows the test data loaded from JSON files
-GET http://localhost:8080/api/restaurants/
+GET http://localhost:8080/api/restaurants
 
 ###
 

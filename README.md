@@ -39,7 +39,7 @@ Attached to `RetryTemplate` via `setRetryListener()` for production observabilit
 
 ## Configuration
 
-Enable resilience features in `QuickBytesApplication.java`:
+Enable resilience features in `Application.java`:
 
 ```java
 @SpringBootApplication
