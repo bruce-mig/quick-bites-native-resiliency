@@ -2,6 +2,7 @@ package com.github.bruce_mig.quick_bites.restaurants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.resilience.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -24,16 +25,17 @@ public class RestaurantService  {
 //     *
 //     * @Retryable configuration:
 //     * - default: All Exceptions & 3 retries
-//     * - maxAttempts: 4 (1 initial + 3 retries)
+//     * - maxRetries: 4 (1 initial + 3 retries)
 //     * - includes: Only retry on RestaurantApiException
 //     * - backoff: Start with 1 second, multiply by 2 (exponential backoff)
 //     */
-//    @Retryable(
-//            maxAttempts = 4,
-//            includes = RestaurantApiException.class,
-//            delay = 1000, // 1-second delay
-//            multiplier = 2 // double the delay for each retry attempt
-//    )
+    @Retryable(
+            maxRetries = 4,
+            includes = RestaurantApiException.class,
+            delay = 1000, // 1-second delay
+            multiplier = 2 // double the delay for each retry attempt
+
+    )
     public List<MenuItem> getMenuFromPartner(String restaurantId) {
         log.info("🍽️  Fetching menu from restaurant partner API for: {}", restaurantId);
 
